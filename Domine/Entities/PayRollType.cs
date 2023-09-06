@@ -10,6 +10,5 @@ namespace Domine.Entities
     {
         public string NameType {get; set;} 
         public ICollection<Person> People {get; set;}
-        public ICollection<Player> Players{get; set;}
     }
 }

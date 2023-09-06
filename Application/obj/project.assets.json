@@ -5185,8 +5185,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
-              "projectPath": "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj"
+            "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
+              "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj"
             },
             "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Persistence\\Persistence.csproj": {
               "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Persistence\\Persistence.csproj"

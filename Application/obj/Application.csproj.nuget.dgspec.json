@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
-                "projectPath": "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj"
+              "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
+                "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj"
               },
               "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Persistence\\Persistence.csproj": {
                 "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Persistence\\Persistence.csproj"
@@ -70,14 +70,14 @@
         }
       }
     },
-    "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
+    "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj",
+        "projectUniqueName": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj",
         "projectName": "Domine",
-        "projectPath": "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj",
+        "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj",
         "packagesPath": "C:\\Users\\APT01-61\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\obj\\",
+        "outputPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\APT01-61\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -159,8 +159,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
-                "projectPath": "c:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj"
+              "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
+                "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj"
               }
             }
           }

@@ -12,11 +12,11 @@ public class PlayerPositionConfiguration : IEntityTypeConfiguration<PlayerPositi
         builder.HasKey(pp => new { pp.FKIdPlayer, pp.FKIdPosition }); // Definir clave primaria compuesta
 
         builder.HasOne(pp => pp.Player)
-            .WithMany()
+            .WithMany(pp => pp.PlayerPositions)
             .HasForeignKey(pp => pp.FKIdPlayer);
 
         builder.HasOne(pp => pp.Position)
-            .WithMany()
+            .WithMany(pp => pp.PlayerPositions)
             .HasForeignKey(pp => pp.FKIdPosition);
     }
 }

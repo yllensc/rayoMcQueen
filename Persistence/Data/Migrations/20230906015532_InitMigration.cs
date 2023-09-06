@@ -83,38 +83,6 @@ namespace Persistence.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Person",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FirstNamePerson = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastNamePerson = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    AgePerson = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    FKIdPayRollType = table.Column<int>(type: "int", nullable: false),
-                    FKIdTeam = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Person", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Person_PayRollType_FKIdPayRollType",
-                        column: x => x.FKIdPayRollType,
-                        principalTable: "PayRollType",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Person_Team_FKIdTeam",
-                        column: x => x.FKIdTeam,
-                        principalTable: "Team",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Player",
                 columns: table => new
                 {
@@ -132,10 +100,43 @@ namespace Persistence.Data.Migrations
                         column: x => x.PayRollTypeId,
                         principalTable: "PayRollType",
                         principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Person",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FirstNamePerson = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    LastNamePerson = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    AgePerson = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    FKIdPayRollType = table.Column<int>(type: "int", nullable: false),
+                    FKIdTeam = table.Column<int>(type: "int", nullable: false),
+                    FKIdPlayer = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Person", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Player_Person_FKIdPerson",
-                        column: x => x.FKIdPerson,
-                        principalTable: "Person",
+                        name: "FK_Person_PayRollType_FKIdPayRollType",
+                        column: x => x.FKIdPayRollType,
+                        principalTable: "PayRollType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Person_Player_FKIdPlayer",
+                        column: x => x.FKIdPlayer,
+                        principalTable: "Player",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Person_Team_FKIdTeam",
+                        column: x => x.FKIdTeam,
+                        principalTable: "Team",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -196,14 +197,15 @@ namespace Persistence.Data.Migrations
                 column: "FKIdPayRollType");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Person_FKIdPlayer",
+                table: "Person",
+                column: "FKIdPlayer",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Person_FKIdTeam",
                 table: "Person",
                 column: "FKIdTeam");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Player_FKIdPerson",
-                table: "Player",
-                column: "FKIdPerson");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Player_PayRollTypeId",
@@ -250,19 +252,19 @@ namespace Persistence.Data.Migrations
                 name: "PlayerPosition");
 
             migrationBuilder.DropTable(
-                name: "Player");
+                name: "Person");
 
             migrationBuilder.DropTable(
                 name: "Position");
 
             migrationBuilder.DropTable(
-                name: "Person");
-
-            migrationBuilder.DropTable(
-                name: "PayRollType");
+                name: "Player");
 
             migrationBuilder.DropTable(
                 name: "Team");
+
+            migrationBuilder.DropTable(
+                name: "PayRollType");
 
             migrationBuilder.DropTable(
                 name: "Country");

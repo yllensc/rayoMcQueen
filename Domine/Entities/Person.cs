@@ -14,7 +14,8 @@ namespace Domine.Entities
         public PayRollType PayRollType { get; set;}
         public int FKIdTeam { get; set;}
         public Team Team { get; set;}
-        public ICollection<Player> Players { get; set; } 
+        public int FKIdPlayer { get; set;}
+        public Player Player { get; set;}	
         public ICollection<PlayerPosition> PlayerPositions{ get; set;}
     }
 }

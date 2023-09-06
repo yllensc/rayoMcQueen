@@ -9,6 +9,7 @@ namespace Domine.Entities;
         public int FKIdPerson { get; set; }
         public Person Person{ get; set; }
         public int Dorsal { get; set; }
+        public ICollection<PlayerPosition> PlayerPositions{ get; set; }
     
     }
     

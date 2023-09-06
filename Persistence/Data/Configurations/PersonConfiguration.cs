@@ -20,8 +20,13 @@ namespace Persistence.Data.Configurations;
         builder.HasOne(t => t.Team)
         .WithMany(t => t.People)
         .HasForeignKey(t => t.FKIdTeam);
+
          builder.HasOne(t => t.PayRollType)
         .WithMany(t => t.People)
         .HasForeignKey(t => t.FKIdPayRollType);
+        
+        builder.HasOne(p => p.Player)
+        .WithOne(P => P.Person)
+        .HasForeignKey<Player>(p => p.FKIdPerson);
     }
 }

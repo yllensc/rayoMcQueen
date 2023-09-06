@@ -12,7 +12,7 @@ namespace Persistence.Data.Configurations;
         builder.Property(d => d.Dorsal)
         .IsRequired();
         builder.HasOne(t => t.Person)
-        .WithMany(t => t.Players)
-        .HasForeignKey(t => t.FKIdPerson);
+        .WithOne(t => t.Player)
+        .HasForeignKey<Person>(t => t.FKIdPlayer);
     }
 }

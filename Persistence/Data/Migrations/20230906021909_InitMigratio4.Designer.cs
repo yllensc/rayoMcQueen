@@ -11,8 +11,8 @@ using Persistence.Data;
 namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(RayoMcQueenDbContext))]
-    [Migration("20230905215101_InitMigration")]
-    partial class InitMigration
+    [Migration("20230906021909_InitMigratio4")]
+    partial class InitMigratio4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,9 @@ namespace Persistence.Data.Migrations
                     b.Property<int>("FKIdPayRollType")
                         .HasColumnType("int");
 
+                    b.Property<int>("FKIdPlayer")
+                        .HasColumnType("int");
+
                     b.Property<int>("FKIdTeam")
                         .HasColumnType("int");
 
@@ -87,6 +90,9 @@ namespace Persistence.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FKIdPayRollType");
+
+                    b.HasIndex("FKIdPlayer")
+                        .IsUnique();
 
                     b.HasIndex("FKIdTeam");
 
@@ -105,14 +111,7 @@ namespace Persistence.Data.Migrations
                     b.Property<int>("FKIdPerson")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PayRollTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("FKIdPerson");
-
-                    b.HasIndex("PayRollTypeId");
 
                     b.ToTable("Player", (string)null);
                 });
@@ -128,16 +127,11 @@ namespace Persistence.Data.Migrations
                     b.Property<int?>("PersonId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PositionId")
-                        .HasColumnType("int");
-
                     b.HasKey("FKIdPlayer", "FKIdPosition");
 
                     b.HasIndex("FKIdPosition");
 
                     b.HasIndex("PersonId");
-
-                    b.HasIndex("PositionId");
 
                     b.ToTable("PlayerPosition", (string)null);
                 });
@@ -191,6 +185,12 @@ namespace Persistence.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Domine.Entities.Player", "Player")
+                        .WithOne("Person")
+                        .HasForeignKey("Domine.Entities.Person", "FKIdPlayer")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Domine.Entities.Team", "Team")
                         .WithMany("People")
                         .HasForeignKey("FKIdTeam")
@@ -199,34 +199,21 @@ namespace Persistence.Data.Migrations
 
                     b.Navigation("PayRollType");
 
+                    b.Navigation("Player");
+
                     b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("Domine.Entities.Player", b =>
-                {
-                    b.HasOne("Domine.Entities.Person", "Person")
-                        .WithMany("Players")
-                        .HasForeignKey("FKIdPerson")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domine.Entities.PayRollType", null)
-                        .WithMany("Players")
-                        .HasForeignKey("PayRollTypeId");
-
-                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Domine.Entities.PlayerPosition", b =>
                 {
                     b.HasOne("Domine.Entities.Player", "Player")
-                        .WithMany()
+                        .WithMany("PlayerPositions")
                         .HasForeignKey("FKIdPlayer")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domine.Entities.Position", "Position")
-                        .WithMany()
+                        .WithMany("PlayerPositions")
                         .HasForeignKey("FKIdPosition")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -234,10 +221,6 @@ namespace Persistence.Data.Migrations
                     b.HasOne("Domine.Entities.Person", null)
                         .WithMany("PlayerPositions")
                         .HasForeignKey("PersonId");
-
-                    b.HasOne("Domine.Entities.Position", null)
-                        .WithMany("PlayerPositions")
-                        .HasForeignKey("PositionId");
 
                     b.Navigation("Player");
 
@@ -263,15 +246,18 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domine.Entities.PayRollType", b =>
                 {
                     b.Navigation("People");
-
-                    b.Navigation("Players");
                 });
 
             modelBuilder.Entity("Domine.Entities.Person", b =>
                 {
                     b.Navigation("PlayerPositions");
+                });
 
-                    b.Navigation("Players");
+            modelBuilder.Entity("Domine.Entities.Player", b =>
+                {
+                    b.Navigation("Person");
+
+                    b.Navigation("PlayerPositions");
                 });
 
             modelBuilder.Entity("Domine.Entities.Position", b =>
