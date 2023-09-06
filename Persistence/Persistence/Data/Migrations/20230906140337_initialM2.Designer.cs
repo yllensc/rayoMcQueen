@@ -8,11 +8,11 @@ using Persistence.Data;
 
 #nullable disable
 
-namespace Persistence.Data.Migrations
+namespace Persistence.Persistence.Data.Migrations
 {
     [DbContext(typeof(RayoMcQueenDbContext))]
-    [Migration("20230906021909_InitMigratio4")]
-    partial class InitMigratio4
+    [Migration("20230906140337_initialM2")]
+    partial class initialM2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,14 +124,9 @@ namespace Persistence.Data.Migrations
                     b.Property<int>("FKIdPosition")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PersonId")
-                        .HasColumnType("int");
-
                     b.HasKey("FKIdPlayer", "FKIdPosition");
 
                     b.HasIndex("FKIdPosition");
-
-                    b.HasIndex("PersonId");
 
                     b.ToTable("PlayerPosition", (string)null);
                 });
@@ -218,10 +213,6 @@ namespace Persistence.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domine.Entities.Person", null)
-                        .WithMany("PlayerPositions")
-                        .HasForeignKey("PersonId");
-
                     b.Navigation("Player");
 
                     b.Navigation("Position");
@@ -246,11 +237,6 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domine.Entities.PayRollType", b =>
                 {
                     b.Navigation("People");
-                });
-
-            modelBuilder.Entity("Domine.Entities.Person", b =>
-                {
-                    b.Navigation("PlayerPositions");
                 });
 
             modelBuilder.Entity("Domine.Entities.Player", b =>

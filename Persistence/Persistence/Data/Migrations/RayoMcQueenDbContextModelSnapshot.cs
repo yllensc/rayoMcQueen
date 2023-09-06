@@ -2,20 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Data;
 
 #nullable disable
 
-namespace Persistence.Data.Migrations
+namespace Persistence.Persistence.Data.Migrations
 {
     [DbContext(typeof(RayoMcQueenDbContext))]
-    [Migration("20230906021454_InitMigratio3")]
-    partial class InitMigratio3
+    partial class RayoMcQueenDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,12 +108,7 @@ namespace Persistence.Data.Migrations
                     b.Property<int>("FKIdPerson")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PayRollTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PayRollTypeId");
 
                     b.ToTable("Player", (string)null);
                 });
@@ -129,14 +121,9 @@ namespace Persistence.Data.Migrations
                     b.Property<int>("FKIdPosition")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PersonId")
-                        .HasColumnType("int");
-
                     b.HasKey("FKIdPlayer", "FKIdPosition");
 
                     b.HasIndex("FKIdPosition");
-
-                    b.HasIndex("PersonId");
 
                     b.ToTable("PlayerPosition", (string)null);
                 });
@@ -209,13 +196,6 @@ namespace Persistence.Data.Migrations
                     b.Navigation("Team");
                 });
 
-            modelBuilder.Entity("Domine.Entities.Player", b =>
-                {
-                    b.HasOne("Domine.Entities.PayRollType", null)
-                        .WithMany("Players")
-                        .HasForeignKey("PayRollTypeId");
-                });
-
             modelBuilder.Entity("Domine.Entities.PlayerPosition", b =>
                 {
                     b.HasOne("Domine.Entities.Player", "Player")
@@ -229,10 +209,6 @@ namespace Persistence.Data.Migrations
                         .HasForeignKey("FKIdPosition")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Domine.Entities.Person", null)
-                        .WithMany("PlayerPositions")
-                        .HasForeignKey("PersonId");
 
                     b.Navigation("Player");
 
@@ -258,13 +234,6 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domine.Entities.PayRollType", b =>
                 {
                     b.Navigation("People");
-
-                    b.Navigation("Players");
-                });
-
-            modelBuilder.Entity("Domine.Entities.Person", b =>
-                {
-                    b.Navigation("PlayerPositions");
                 });
 
             modelBuilder.Entity("Domine.Entities.Player", b =>

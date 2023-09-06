@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Persistence.Data.Migrations
+namespace Persistence.Persistence.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitMigration : Migration
+    public partial class initialM : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,6 +46,21 @@ namespace Persistence.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Player",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FKIdPerson = table.Column<int>(type: "int", nullable: false),
+                    Dorsal = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Player", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Position",
                 columns: table => new
                 {
@@ -79,27 +94,6 @@ namespace Persistence.Data.Migrations
                         principalTable: "Country",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Player",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FKIdPerson = table.Column<int>(type: "int", nullable: false),
-                    Dorsal = table.Column<int>(type: "int", nullable: false),
-                    PayRollTypeId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Player", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Player_PayRollType_PayRollTypeId",
-                        column: x => x.PayRollTypeId,
-                        principalTable: "PayRollType",
-                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -148,8 +142,7 @@ namespace Persistence.Data.Migrations
                 {
                     FKIdPlayer = table.Column<int>(type: "int", nullable: false),
                     FKIdPosition = table.Column<int>(type: "int", nullable: false),
-                    PersonId = table.Column<int>(type: "int", nullable: true),
-                    PositionId = table.Column<int>(type: "int", nullable: true)
+                    PersonId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -171,11 +164,6 @@ namespace Persistence.Data.Migrations
                         principalTable: "Position",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PlayerPosition_Position_PositionId",
-                        column: x => x.PositionId,
-                        principalTable: "Position",
-                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -208,11 +196,6 @@ namespace Persistence.Data.Migrations
                 column: "FKIdTeam");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Player_PayRollTypeId",
-                table: "Player",
-                column: "PayRollTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PlayerPosition_FKIdPosition",
                 table: "PlayerPosition",
                 column: "FKIdPosition");
@@ -221,11 +204,6 @@ namespace Persistence.Data.Migrations
                 name: "IX_PlayerPosition_PersonId",
                 table: "PlayerPosition",
                 column: "PersonId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PlayerPosition_PositionId",
-                table: "PlayerPosition",
-                column: "PositionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Position_NamePosition",
@@ -258,13 +236,13 @@ namespace Persistence.Data.Migrations
                 name: "Position");
 
             migrationBuilder.DropTable(
+                name: "PayRollType");
+
+            migrationBuilder.DropTable(
                 name: "Player");
 
             migrationBuilder.DropTable(
                 name: "Team");
-
-            migrationBuilder.DropTable(
-                name: "PayRollType");
 
             migrationBuilder.DropTable(
                 name: "Country");

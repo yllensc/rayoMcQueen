@@ -16,6 +16,6 @@ namespace Domine.Entities
         public Team Team { get; set;}
         public int FKIdPlayer { get; set;}
         public Player Player { get; set;}	
-        public ICollection<PlayerPosition> PlayerPositions{ get; set;}
+        
     }
 }

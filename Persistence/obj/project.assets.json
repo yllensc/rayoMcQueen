@@ -5141,32 +5141,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\APT01-61\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Persistence\\Persistence.csproj",
+      "projectUniqueName": "d:\\DATOS DE USUARIO\\Documents\\Campus\\c#\\rayoMcQueen\\Persistence\\Persistence.csproj",
       "projectName": "Persistence",
-      "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Persistence\\Persistence.csproj",
-      "packagesPath": "C:\\Users\\APT01-61\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Persistence\\obj\\",
+      "projectPath": "d:\\DATOS DE USUARIO\\Documents\\Campus\\c#\\rayoMcQueen\\Persistence\\Persistence.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "d:\\DATOS DE USUARIO\\Documents\\Campus\\c#\\rayoMcQueen\\Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APT01-61\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj": {
-              "projectPath": "C:\\Users\\APT01-61\\Documents\\rayoMcQueen\\Domine\\Domine.csproj"
+            "d:\\DATOS DE USUARIO\\Documents\\Campus\\c#\\rayoMcQueen\\Domine\\Domine.csproj": {
+              "projectPath": "d:\\DATOS DE USUARIO\\Documents\\Campus\\c#\\rayoMcQueen\\Domine\\Domine.csproj"
             }
           }
         }
@@ -5206,7 +5208,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
       }
     }
   }
